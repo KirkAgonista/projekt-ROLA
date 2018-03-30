@@ -1,0 +1,32 @@
+<header>
+	<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+	  <a class="navbar-brand" (click)="onSigninOrLogout()"><img src="./../../../assets/logo.png"/></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	    <ng-template [ngIf]="authService.isAuthenticated()">
+	    	<li class="nav-item" (click)="onMenuClick()">
+	    		<a class="nav-link">Menu</a>
+	    	</li>
+	    </ng-template>
+	    </ul>
+	    <ul class="navbar-nav ml-auto">
+	      <li routerLinkActive="active" routerLink="/home" class="nav-item">
+	        <a class="nav-link">Informacje</a>
+	      </li>
+	      <li routerLinkActive="active" routerLink="/about" class="nav-item">
+	        <a class="nav-link">Powitanie</a>
+	      </li>
+	      <li routerLinkActive="active" routerLink="/albums" class="nav-item">
+	        <a class="nav-link">Albumy</a>
+	      </li>
+	      <li routerLinkActive="active" class="nav-item" (click)="onDocumentClick()">
+	        <a class="nav-link">Dokumenty</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+</header>

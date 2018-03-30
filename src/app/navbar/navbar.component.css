@@ -1,0 +1,47 @@
+header {
+    z-index: 99;
+    height: 122px;
+}
+header img {
+	width: 300px;
+	filter: contrast(140%) invert(100%) grayscale(100%) drop-shadow(8px 8px 10px #d4d8dd);
+}
+.signup{
+	filter: none;
+}
+header a {
+	font-size: 1.4em;
+}
+header li {
+	opacity: 0.9;
+}
+header li:focus {
+	outline: none;
+}
+.active ,header li:hover {
+	opacity: 1;
+	text-decoration: underline;
+	cursor: pointer;
+	transition: opacity 0.4s, text-decoration 0.4s;
+}
+
+@media screen and (max-width: 992px) {
+	header {
+		height: 59px;
+	}
+	header img {
+		width: 100px;
+	}
+	.documents h4 {
+		font-size: 20px;
+	}
+	header a {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.documents h4, .documents a {
+		font-size: 14px;
+	}
+}

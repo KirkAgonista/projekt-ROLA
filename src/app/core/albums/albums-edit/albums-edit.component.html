@@ -1,0 +1,51 @@
+<div class=" m-0 p-0">
+    <form class="m-0 p-3" [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+    <h1 *ngIf="editMode; else createBlock">Edytuj: {{album.caption}}</h1>
+    <ng-template #createBlock><h1>Stwórz album:</h1></ng-template>
+        <div class="form-group">
+            <label for="caption">Podpis:</label>
+            <input class="form-control" type="text" name="caption" formControlName="caption"/>
+        </div>
+         <div
+          class="alert alert-danger" *ngIf="albumForm.get('caption').hasError('required') && albumForm.get('caption').touched">
+          Brak podpisu.
+        </div>
+        <div class="form-group">
+            <label for="url">Adres internetowy do albumu:</label>
+            <input class="form-control" type="text" name="url" formControlName="url"/>
+        </div>
+         <div
+          class="alert alert-danger" *ngIf="albumForm.get('url').hasError('required') && albumForm.get('url').touched">
+          Brak adresu internetowego.
+        </div>
+        <div class="form-group">
+            <label for="img">Adres do zdjęcia:</label>
+            <input class="form-control" type="text" name="img" formControlName="img"/>
+        </div>
+         <div
+          class="alert alert-danger" *ngIf="albumForm.get('img').hasError('required') && albumForm.get('img').touched">
+          Brak zdjęcia.
+        </div>
+        <div class="form-group row m-2 d-flex justify-content-between">
+            <button
+              class="btn btn-danger  col-md-2 mb-4"
+              mwlConfirmationPopover
+              [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            [confirmText]="confirmText"
+            [cancelText]="cancelText"
+            [placement]="placement"
+            (confirm)="confirmClicked = true;  onDeleteAlbum()"
+            (cancel)="cancelClicked = true"
+            confirmButtonType="danger"
+            cancelButtonType="default"
+            (click)="confirmClicked = false; cancelClicked = false;"
+            [appendToBody]="true"
+            *ngIf="editMode">
+              Usuń
+            </button>
+            <button class="btn btn-warning col-md-2 mb-4" (click)="onCancel()" type="button">Anuluj</button>
+            <button class="btn btn-success col-md-2 mb-4" type="submit" [disabled]="albumForm.invalid">Zatwierdź</button>
+        </div>
+    </form>
+</div>

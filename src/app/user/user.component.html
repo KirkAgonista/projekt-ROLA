@@ -1,0 +1,59 @@
+<div class=" w-100 h-100 m-0 p-0">
+    <div class="row about m-0">
+        
+            <div class="col-md-12" *ngIf="menuMode == 'menu'">
+                <h4 class="my-4 text-center">Menu Główne:</h4>
+                <div class="btn btn-success w-100 my-2" (click)="menuMode = 'posts'">Lista postów</div>
+                <div class="btn btn-success w-100 my-2" (click)="menuMode = 'albums'">Lista albumów</div>
+                <div class="btn btn-success w-100 my-2" (click)="menuMode = 'documents'">Lista dokumentów</div>
+                <div class="btn btn-success w-100 my-2" routerLink="about/edit">Edytuj Powitanie</div>
+            </div>
+            
+            <div class="col-md-12" *ngIf="menuMode ==  'albums'">
+                <div class="header">
+                    <h4 class="my-4 text-center">Albumy:</h4>
+                    <div class="btn btn-success w-100 my-2" (click)="menuMode =  'menu'">Wróć do Menu</div>
+                    <div class="btn btn-success w-100 my-2" routerLink="/albums/new">Nowy Album</div>
+                </div>
+                <div class="row p-2 justify-content-around scroll albums">
+                    <div *ngFor="let album of albums; let iAlbums = index" class="card mb-2" style="width: 18rem;" (click)="onAlbumEdit(iAlbums)">
+                      <img class="card-img-top" [src]="album.img" [alt]="album.caption">
+                      <div class="card-body">
+                        <h4 class="card-title">{{album.caption}}</h4>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12" *ngIf="menuMode ==  'posts'">
+                <div class="menu-header">
+                    <h4 class="my-4 text-center">Posty:</h4>
+                    <div class="btn btn-success w-100 my-2" (click)="menuMode =  'menu'">Wróć do Menu</div>
+                    <div class="btn btn-success w-100 my-2" routerLink="/new">Nowy Post</div>
+                </div>
+                <div class="row p-2 justify-content-around scroll">
+                    <ul class="list-group">
+                       <li *ngFor="let post of posts; let iPosts = index"
+                       class="list-group-item list-group-item-action" (click)="onPostEdit(iPosts, post)">
+                       <div [class.roadRunner]="post === selectedPost"> <strong>{{post.titlePost}}</strong> - {{post.date}}</div></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-12" *ngIf="menuMode ==  'documents'">
+                <div class="menu-header">
+                    <h4 class="my-4 text-center">Dokumenty:</h4>
+                    <div class="btn btn-success w-100 my-2" (click)="menuMode =  'menu'">Wróć do Menu</div>
+                    <div class="btn btn-success w-100 my-2" routerLink="/documents/new">Nowy Dokument</div>
+                </div>
+                <div class="row p-2 justify-content-around scroll">
+                    <ul class="list-group">
+                       <li *ngFor="let document of documents; let iDocuments = index"
+                       class="list-group-item list-group-item-action" (click)="onDocumentEdit(iDocuments, document)">
+                           <div [class.roadRunner]="document === selectedDocument"> <strong>{{document.name}}</strong></div></li>
+                    </ul>
+                </div>
+            </div>
+            
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.row {
+    max-width: 100%;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .row div:first-child {
+        order: 0;
+        -webkit-order: 0;
+    }
+    .row div:nth-child(2) {
+        order: 2;
+        -webkit-order: 2;
+    }
+    .row div:nth-child(3) {
+        order: 1;
+        -webkit-order: 1;
+    }
+}

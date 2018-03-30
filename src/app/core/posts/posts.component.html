@@ -1,0 +1,8 @@
+<section class="card p-2 border-top-0 border-light ">
+    <ng-template [ngIf]="authService.isAuthenticated()">
+        <a class="btn btn-success" routerLink="/new">Nowy Post</a>
+    </ng-template>
+    <hr>
+    <app-post *ngFor="let postItem of posts; let i = index"
+    [post]="postItem" [id]="i"></app-post>
+</section>

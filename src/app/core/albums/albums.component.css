@@ -1,0 +1,45 @@
+/*.albums {*/
+/*	margin: 0 auto;*/
+/*	width: 66%;*/
+/*	background-color: #f2f2f2;*/
+/*	padding: 0 15px;*/
+/*	opacity: 0.98;*/
+/*	display: flex;*/
+/*	flex-direction: row;*/
+/*	flex-wrap: wrap;*/
+/*	justify-content: center;*/
+/*	height: auto;*/
+/*	margin-top: 200px;*/
+/*}*/
+/*.albums div {*/
+/*	margin: 1.5%;*/
+/*	height: 100%;*/
+/*}*/
+    
+/*.album-container img {*/
+/*	width: 100%;*/
+/*	min-width: 100px;*/
+/*	max-height: 300px;*/
+/*	max-width: 400px;*/
+/*}*/
+
+/*.album-container:hover a img {*/
+/*	flex-grow: 2;*/
+/*	max-width: 640px;*/
+/*	max-height: 480px;*/
+
+/*}*/
+
+/*.album-container {*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    */
+/*}*/
+
+/*.album-container:hover a div {*/
+
+/*}*/
+
+/*.album-container a div {*/
+
+/*}*/

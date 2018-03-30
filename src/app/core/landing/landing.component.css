@@ -1,0 +1,10 @@
+
+div {
+    height: 83.35vh!important;
+    
+    z-index:2;
+}
+div img {
+    z-index: 3;
+    filter: contrast(140%) invert(100%) grayscale(100%) drop-shadow(8px 8px 10px #d4d8dd);
+}

@@ -1,0 +1,98 @@
+<div class=" m-0 p-0">
+    <form class="m-0 p-3" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <h1 *ngIf="editMode; else createBlock">Edytuj: {{post.titlePost}}</h1>
+    <ng-template #createBlock><h1>Stwórz post:</h1></ng-template>
+        <div class="form-group">
+            <label for="titlePost">Tytuł:</label>
+            <input class="form-control" type="text" name="titlePost" formControlName="titlePost"/>
+        </div>
+         <div
+          class="alert alert-danger" *ngIf="postForm.get('titlePost').hasError('required') && postForm.get('titlePost').touched">
+          Brak tytułu postu.
+        </div>
+        <div class="form-group m-auto row d-flex justify-content-between">
+            <div formArrayName="imagePath" class="col-md-10 images">
+                <div class="row m-3 justify-content-between" 
+                *ngFor="let imagePathControl of postForm['controls'].imagePath['controls']; let i = index">
+                 <label class="col-md-12" for="imagePath">Adres zdjęcia:</label>
+                 <input class="form-control col-md-10 mb-3" type="text" name="imagePath" [formControlName]="i"/>
+                 <button class="btn btn-warning col-md-1 p-1 mb-auto mt-0" (click)="onDeleteImage(i)" type="button">X</button>
+                </div>
+            </div>
+            <button class="btn btn-success col-md-1 m-auto" (click)="onAddImage()" type="button">+</button>
+        </div>
+        <div class="form-group">
+            <label for="contentPost">Tekst postu:</label>
+            <quill-editor name="contentPost" formControlName="contentPost">
+                <div quill-editor-toolbar>
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" [title]="'Pogrubienie'"></button>
+                        <button type="button" class="ql-italic" [title]="'Pochylenie'"></button>
+                        <button type="button" class="ql-underline" [title]="'Podkreślenie'"></button>
+                        <button type="button" class="ql-strike" [title]="'Przekreślenie'"></button>
+                    </span>
+                      
+                    <span class="ql-formats" >
+                      <select class="ql-size" [title]="'Wielkość Czcionki'">
+                        <option value="small"></option>
+                        <option selected [value]="false"></option>
+                        <option value="large"></option>
+                        <option value="huge"></option>
+                      </select>
+                      
+                      <select class="ql-header" [title]="'Nagłówek'">
+                        <option [value]="1"></option>
+                        <option [value]="2"></option>
+                        <option [value]="3"></option>
+                        <option [value]="4"></option>
+                        <option [value]="5"></option>
+                        <option [value]="6"></option>
+                        <option selected [value]="false"></option>
+                      </select>
+                    </span>
+                    <span class="ql-formats">
+                        <span class="ql-color ql-picker ql-color-picker" [title]="'Kolor Czcionki'">
+                            <span class="ql-picker-label"></span>
+                            <span class="ql-picker-options"></span>
+                        </span>
+                        <span class="ql-background ql-picker ql-color-picker" [title]="'Kolor Tła'">
+                            <span class="ql-picker-label"></span>
+                            <span class="ql-picker-options"></span>
+                        </span>
+                    </span>
+                    <span class="ql-formats">
+                        <button type="button" class="ql-link" [title]="'Odnośnik'"></button>    
+                    </span> 
+                    
+                </div>
+            </quill-editor>
+        </div>
+        <div
+          class="alert alert-danger" *ngIf="postForm.get('contentPost').hasError('required') && postForm.get('contentPost').touched">
+          Brak treści postu.
+        </div>
+        <div class="form-group row m-2 d-flex justify-content-between">
+            <button
+              class="btn btn-danger  col-md-2 mb-4"
+              mwlConfirmationPopover
+              [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            [confirmText]="confirmText"
+            [cancelText]="cancelText"
+            [placement]="placement"
+            (confirm)="confirmClicked = true;  onDeletePost()"
+            (cancel)="cancelClicked = true"
+            confirmButtonType="danger"
+            cancelButtonType="default"
+            (click)="confirmClicked = false; cancelClicked = false;"
+            [appendToBody]="true"
+            *ngIf="editMode">
+              Usuń
+            </button>
+            <button class="btn btn-warning col-md-2 mb-4" (click)="onCancel()" type="button">Anuluj</button>
+            <button class="btn btn-success col-md-2 mb-4" type="submit" [disabled]="postForm.invalid">Zatwierdź</button>
+        </div>
+       
+    </form>
+    
+</div>
