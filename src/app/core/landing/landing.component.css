@@ -4,7 +4,31 @@ div {
     
     z-index:2;
 }
-div img {
-    z-index: 3;
-    filter: contrast(140%) invert(100%) grayscale(100%) drop-shadow(8px 8px 10px #d4d8dd);
+a {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+}
+.svg-logo {
+    position:fixed;
+    top:12.5%;
+    width: 800px;
+    height: 600px;
+}
+
+@media screen and (max-width: 799px) {
+    a {
+        max-width: 300px;
+    }
+    .svg-logo {
+        width: 400px;
+    }
+}
+
+
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

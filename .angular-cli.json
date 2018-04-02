@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "../node_modules/quill/dist/quill.snow.css",
-        "../node_modules/quill/dist/quill.bubble.css"
+        
+        "../node_modules/jquery/dist/jquery.min.js"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
