@@ -30,7 +30,7 @@ app.use(session({
   
     
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 app.use("/api/posts", postRoutes);
 
@@ -43,7 +43,7 @@ app.use("/api/about", aboutRoutes);
 app.use("/api/documents", documentsRoutes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, './dist/index.html'));
 });
     
 
